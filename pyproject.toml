@@ -3,7 +3,6 @@ name = "chatwithsocket"
 version = "0.1.0"
 description = ""
 authors = ["Nikita Orlovsky <orlovski15555@gmail.com>"]
-packages = [{ include = "chatwithsocket", from = "." }]  # можно удалить, если нет пакета
 
 [tool.poetry.dependencies]
 python = "^3.12"
