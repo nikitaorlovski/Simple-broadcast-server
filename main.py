@@ -28,10 +28,10 @@ async def ws_endpoint(websocket: WebSocket, name: str = Query("Guest")):
             text = await websocket.receive_text()
             payload = f"{client.name}: {text}"
             await asyncio.gather(*[
-                c.ws.send_text(payload) for c in clients
+                c.ws.send_text(payload) for c in clients if c is not client
             ])
     except WebSocketDisconnect:
         clients.remove(client)
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8001)))
